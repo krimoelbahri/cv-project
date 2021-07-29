@@ -43,7 +43,7 @@ class InfoArea extends React.Component{
             area= <input 
             onBlur= {this.handleBlur} 
             onChange={this.handleChange} 
-            type="text"
+            type={this.props.type}
             placeholder={this.state.name}
             />   
         }else{
@@ -66,7 +66,7 @@ class GeneralInfo extends React.Component{
              <InfoArea name="Address"/>
              </div>
              <div>
-             <InfoArea name="Phone Number"/>
+             <InfoArea name="Phone Number" type="number"/>
              <InfoArea name="Email"/>
              <InfoArea name="Website"/>
              </div>
