@@ -1,4 +1,4 @@
-import './App.css';
+import './style/App.css';
 import {GeneralInfo} from './components/general_information'
 function App() {
   return (
