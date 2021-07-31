@@ -1,13 +1,13 @@
 import "./style/App.css";
-import { GeneralInfo } from "./components/general_information";
-import { BodyComponent } from "./components/body_component";
+import { GeneralInfo } from "./components/General_information";
+import { BodyComponent } from "./components/Body_component";
 function App() {
 	return (
 		<div className="App">
 			<div id="cvContainer">
 				<GeneralInfo />
-				<BodyComponent name="Experience" />
-				<BodyComponent name="Education" />
+				<BodyComponent name="Experience" place="Company" title="Position" />
+				<BodyComponent name="Education" place="Establishment" title="Degree" />
 			</div>
 		</div>
 	);

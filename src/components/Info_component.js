@@ -1,6 +1,6 @@
 import React from 'react'
 
-class EducationInfo extends React.Component{
+class Information extends React.Component{
     render() {
         let info= this.props.info
         return (
@@ -9,11 +9,11 @@ class EducationInfo extends React.Component{
             return(
             <div key={i} className="information">
                 <div className="pd-1px">
-                    <h3>Establishment: </h3> <p>{obj.establishment}</p>
+                    <h3>{this.props.place}: </h3> <p>{obj.place}</p>
                    
                 </div>
                 <div className="pd-1px">
-                    <h3>Degree: </h3><p>{obj.degree}</p>
+                    <h3>{this.props.title}: </h3><p>{obj.title}</p>
                 </div>
                 <div className="pd-1px date">
                     <div>
@@ -32,5 +32,5 @@ class EducationInfo extends React.Component{
         )
     }
 }
-export {EducationInfo}
+export {Information}
 

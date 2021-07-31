@@ -1,8 +1,8 @@
 import React from "react";
-import { InputComponent } from "./input_component";
+import { InputComponent } from "./Input_component";
 
 class Form extends React.Component {
-	constructor(props) {
+	constructor(props) { 
 		super(props);
 		this.onSubmitEducationInfo =
 			this.onSubmitEducationInfo.bind(this);
@@ -13,8 +13,8 @@ class Form extends React.Component {
 		this.descriptionChange = this.descriptionChange.bind(this);
 
 		this.state = {
-			establishment: "",
-			degree: "",
+			place: "",
+			title: "",
 			startDate: "",
 			endDate: "",
 			description: "",
@@ -56,14 +56,14 @@ class Form extends React.Component {
 			<form onSubmit={this.onSubmitEducationInfo} className="pd-1x">
 				<InputComponent
 					handleInputChange={this.establishmentChange}
-					id="establishment"
-					title="Establishment"
+					id={this.props.place.toLowerCase()}
+					title={this.props.place}
 					type="text"
 				/>
 				<InputComponent
 					handleInputChange={this.degreeChange}
-					id="degree"
-					title="Degree"
+					id={this.props.title.toLowerCase()}
+					title={this.props.title}
 					type="text"
 				/>
 				<div className="form-date pd-1px">
