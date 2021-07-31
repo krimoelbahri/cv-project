@@ -1,9 +1,13 @@
 import './style/App.css';
 import {GeneralInfo} from './components/general_information'
+import {BodyComponent} from './components/body_component'
 function App() {
   return (
     <div className="App">
-      <GeneralInfo/>
+      <div id="cvContainer">
+        <GeneralInfo/>
+        <BodyComponent name="Education"/>
+      </div>    
     </div>
   );
 }
