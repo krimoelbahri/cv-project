@@ -47,7 +47,9 @@ class InfoArea extends React.Component{
             placeholder={this.state.name}
             />   
         }else{
-            area= <h1 onClick={this.handleClick}>{this.state.name}</h1>   
+            area= <h1 
+            onClick={this.handleClick}
+            >{this.state.name}</h1>   
         }
         return(
             <div>{area}</div>
@@ -59,16 +61,16 @@ class GeneralInfo extends React.Component{
 
     render(){
         return(
-         <div>
+         <div id="generalInfo">
              <div>
-             <InfoArea name="Title"/>
-             <InfoArea name="Full Name"/>
-             <InfoArea name="Address"/>
+             <InfoArea name="Title" type="text"/>
+             <InfoArea name="Full Name" type="text"/>
+             <InfoArea name="Address" type="text"/>
              </div>
              <div>
              <InfoArea name="Phone Number" type="number"/>
-             <InfoArea name="Email"/>
-             <InfoArea name="Website"/>
+             <InfoArea name="Email" type="text"/>
+             <InfoArea name="Website" type="text"/>
              </div>
          </div>
         )
