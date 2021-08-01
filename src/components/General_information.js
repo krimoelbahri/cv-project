@@ -36,6 +36,7 @@ class InfoArea extends React.Component {
 	}
 	render() {
 		const isEditing = this.state.isEditing;
+		let isPreview = this.props.isPreview;
 		let area;
 		if (isEditing) {
 			area = (
@@ -51,6 +52,9 @@ class InfoArea extends React.Component {
 		} else {
 			area = <h1 onClick={this.handleClick}>{this.state.name}</h1>;
 		}
+		if (isPreview) {
+			area = <h1>{this.state.name}</h1>;
+		}
 		return <div>{area}</div>;
 	}
 }
@@ -60,25 +64,49 @@ class GeneralInfo extends React.Component {
 		return (
 			<div id="generalInfo">
 				<div id="mainGInfo">
-					<InfoArea name="Title" type="text" />
-					<InfoArea name="Full Name" type="text" />
+					<InfoArea
+						name="Title"
+						type="text"
+						isPreview={this.props.isPreview}
+					/>
+					<InfoArea
+						name="Full Name"
+						type="text"
+						isPreview={this.props.isPreview}
+					/>
 				</div>
 				<div id="sideGInfo">
 					<div className="flex-R">
 						<i className="fas fa-address-book"></i>
-						<InfoArea name="Address" type="text" />
+						<InfoArea
+							name="Address"
+							type="text"
+							isPreview={this.props.isPreview}
+						/>
 					</div>
 					<div className="flex-R">
 						<i className="fas fa-phone"></i>
-						<InfoArea name="Phone Number" type="number" />
+						<InfoArea
+							name="Phone Number"
+							type="number"
+							isPreview={this.props.isPreview}
+						/>
 					</div>
 					<div className="flex-R">
 						<i className="fas fa-envelope"></i>
-						<InfoArea name="Email" type="email" />
+						<InfoArea
+							name="Email"
+							type="email"
+							isPreview={this.props.isPreview}
+						/>
 					</div>
 					<div className="flex-R">
 						<i className="fas fa-at"></i>
-						<InfoArea name="Website" type="text" />
+						<InfoArea
+							name="Website"
+							type="text"
+							isPreview={this.props.isPreview}
+						/>
 					</div>
 				</div>
 			</div>
