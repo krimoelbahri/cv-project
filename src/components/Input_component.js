@@ -8,6 +8,7 @@ class InputComponent extends React.Component {
 					onChange={this.props.handleInputChange}
 					id={this.props.id}
 					type={this.props.type}
+					required
 				/>
 			</div>
 		);
