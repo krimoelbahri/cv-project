@@ -1,3 +1,6 @@
+h1 {
+	padding: 2px;
+}
 h2 {
 	font-size: x-large;
 	padding: 5px;
@@ -5,6 +8,7 @@ h2 {
 }
 h3 {
 	font-weight: bold;
+	padding-right: 5px;
 }
 button {
 	display: inline-block;
@@ -19,15 +23,14 @@ button {
 	background-color: #007bff;
 	border-color: #007bff;
 }
-form {
-	width: 90%;
-	height: 30vmin;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
-	border: 1px solid rgb(199, 186, 186);
-	margin: 5px 0 5px 0;
+input {
+	width: 50%;
+}
+#mainGInfo {
+	font-size: xx-large;
+}
+#sideGInfo {
+	font-size: smaller;
 }
 #cvContainer {
 	max-width: 21cm;
@@ -45,31 +48,75 @@ form {
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 3px solid darkgrey;
+	padding-top: 10px;
 	padding-bottom: 10px;
 	width: 90%;
 	height: 20%;
 }
-.education {
+.buttons-div {
+	display: flex;
+	margin: 50px auto;
+	width: 50%;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.body-info {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
 	width: 90%;
 }
+.body-info-full {
+	width: 90%;
+}
+.body-form {
+	width: 90%;
+	height: 30vmin;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	border: 1px solid rgb(199, 186, 186);
+	margin: 5px 0 5px 0;
+}
+.skill-form {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	border: 1px solid rgb(199, 186, 186);
+	margin: 5px 0 5px 0;
+}
 .information {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 100%;
+	width: 100%;
+	align-items: center;
+}
+.main-information {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	height: 100%;
-	width: 90%;
+	width: 100%;
+	border-bottom: 2px solid darkgray;
+	padding-bottom: 2px;
 }
 .date {
 	display: flex;
 	justify-content: space-between;
-	width: 40%;
+	width: 50%;
 }
 .pd-1px {
 	padding: 1px;
+}
+.pd-2px {
+	padding: 2px;
 }
 .form-div {
 	width: 50%;
@@ -83,4 +130,20 @@ form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+.flex-R {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.fa-trash-alt {
+	color: #007bff;
+	font-size: 200%;
+}
+.fa-circle {
+	font-size: 10%;
+}
+.fa-minus-circle {
+	color: red;
+	font-size: 80%;
 }
