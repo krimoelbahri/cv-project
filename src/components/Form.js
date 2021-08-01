@@ -2,12 +2,12 @@ import React from "react";
 import { InputComponent } from "./Input_component";
 
 class Form extends React.Component {
-	constructor(props) { 
+	constructor(props) {
 		super(props);
 		this.onSubmitEducationInfo =
 			this.onSubmitEducationInfo.bind(this);
-		this.establishmentChange = this.establishmentChange.bind(this);
-		this.degreeChange = this.degreeChange.bind(this);
+		this.placeChange = this.placeChange.bind(this);
+		this.titleChange = this.titleChange.bind(this);
 		this.startDateChange = this.startDateChange.bind(this);
 		this.endDateChange = this.endDateChange.bind(this);
 		this.descriptionChange = this.descriptionChange.bind(this);
@@ -20,14 +20,14 @@ class Form extends React.Component {
 			description: "",
 		};
 	}
-	establishmentChange(e) {
+	placeChange(e) {
 		this.setState({
-			establishment: e.target.value,
+			place: e.target.value,
 		});
 	}
-	degreeChange(e) {
+	titleChange(e) {
 		this.setState({
-			degree: e.target.value,
+			title: e.target.value,
 		});
 	}
 	startDateChange(e) {
@@ -55,13 +55,13 @@ class Form extends React.Component {
 		return (
 			<form onSubmit={this.onSubmitEducationInfo} className="pd-1x">
 				<InputComponent
-					handleInputChange={this.establishmentChange}
+					handleInputChange={this.placeChange}
 					id={this.props.place.toLowerCase()}
 					title={this.props.place}
 					type="text"
 				/>
 				<InputComponent
-					handleInputChange={this.degreeChange}
+					handleInputChange={this.titleChange}
 					id={this.props.title.toLowerCase()}
 					title={this.props.title}
 					type="text"
@@ -84,7 +84,8 @@ class Form extends React.Component {
 					onChange={this.descriptionChange}
 					id="description"
 					title="Description"
-					rows="2" cols="60"
+					rows="2"
+					cols="60"
 					placeholder="2 Lines Max"
 				/>
 				<div>
