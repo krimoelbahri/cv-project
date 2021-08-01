@@ -43,7 +43,9 @@ class InfoArea extends React.Component {
 					onBlur={this.handleBlur}
 					onChange={this.handleChange}
 					type={this.props.type}
+					value={this.state.name}
 					placeholder={this.state.name}
+					autoFocus
 				/>
 			);
 		} else {
@@ -57,15 +59,27 @@ class GeneralInfo extends React.Component {
 	render() {
 		return (
 			<div id="generalInfo">
-				<div>
+				<div id="mainGInfo">
 					<InfoArea name="Title" type="text" />
 					<InfoArea name="Full Name" type="text" />
-					<InfoArea name="Address" type="text" />
 				</div>
-				<div>
-					<InfoArea name="Phone Number" type="number" />
-					<InfoArea name="Email" type="text" />
-					<InfoArea name="Website" type="text" />
+				<div id="sideGInfo">
+					<div className="flex-R">
+						<i className="fas fa-address-book"></i>
+						<InfoArea name="Address" type="text" />
+					</div>
+					<div className="flex-R">
+						<i className="fas fa-phone"></i>
+						<InfoArea name="Phone Number" type="number" />
+					</div>
+					<div className="flex-R">
+						<i className="fas fa-envelope"></i>
+						<InfoArea name="Email" type="email" />
+					</div>
+					<div className="flex-R">
+						<i className="fas fa-at"></i>
+						<InfoArea name="Website" type="text" />
+					</div>
 				</div>
 			</div>
 		);
