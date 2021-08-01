@@ -6,8 +6,16 @@ function App() {
 		<div className="App">
 			<div id="cvContainer">
 				<GeneralInfo />
-				<BodyComponent name="Experience" place="Company" title="Position" />
-				<BodyComponent name="Education" place="Establishment" title="Degree" />
+				<BodyComponent
+					name="Experience"
+					place="Company"
+					title="Position"
+				/>
+				<BodyComponent
+					name="Education"
+					place="Establishment"
+					title="Degree"
+				/>
 			</div>
 		</div>
 	);
