@@ -4,8 +4,7 @@ import { InputComponent } from "./Input_component";
 class Form extends React.Component {
 	constructor(props) {
 		super(props);
-		this.onSubmitEducationInfo =
-			this.onSubmitEducationInfo.bind(this);
+		this.onSubmitInfo = this.onSubmitInfo.bind(this);
 		this.placeChange = this.placeChange.bind(this);
 		this.titleChange = this.titleChange.bind(this);
 		this.startDateChange = this.startDateChange.bind(this);
@@ -45,15 +44,14 @@ class Form extends React.Component {
 			description: e.target.value,
 		});
 	}
-	onSubmitEducationInfo(e) {
+	onSubmitInfo(e) {
 		e.preventDefault();
 		let obj = this.state;
-		console.log(obj);
 		this.props.onSubmitted(obj);
 	}
 	render() {
 		return (
-			<form onSubmit={this.onSubmitEducationInfo} className="pd-1x">
+			<form onSubmit={this.onSubmitInfo} className="pd-1x body-form">
 				<InputComponent
 					handleInputChange={this.placeChange}
 					id={this.props.place.toLowerCase()}
@@ -96,5 +94,42 @@ class Form extends React.Component {
 		);
 	}
 }
+class SkillsForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.onSubmitInfo = this.onSubmitInfo.bind(this);
+		this.skillChange = this.skillChange.bind(this);
 
-export { Form };
+		this.state = {
+			skill: "",
+		};
+	}
+	skillChange(e) {
+		this.setState({
+			skill: e.target.value,
+		});
+	}
+
+	onSubmitInfo(e) {
+		e.preventDefault();
+		let obj = this.state;
+		this.props.onSubmitted(obj);
+	}
+	render() {
+		return (
+			<form onSubmit={this.onSubmitInfo} className="pd-1x skill-form">
+				<InputComponent
+					handleInputChange={this.skillChange}
+					id={this.props.skill.toLowerCase()}
+					title={this.props.skill}
+					type="text"
+				/>
+				<div>
+					<button onClick={this.props.onCancel}>Cancel</button>
+					<button type="submit"> Submit</button>
+				</div>
+			</form>
+		);
+	}
+}
+export { Form, SkillsForm };
