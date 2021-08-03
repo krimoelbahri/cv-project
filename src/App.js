@@ -2,57 +2,41 @@ import "./style/App.css";
 import { GeneralInfo } from "./components/General_information";
 import { BodyComponent } from "./components/Body_component";
 import { SkillsComponent } from "./components/Skills_component";
-import React from "react";
+import React, { useState } from "react";
 
-class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.edit = this.edit.bind(this);
-		this.preview = this.preview.bind(this);
+function App() {
+	const [isPreview, setIsPreview] = useState(false);
 
-		this.state = {
-			isPreview: false,
-		};
-	}
-	edit() {
-		this.setState({
-			isPreview: false,
-		});
-	}
-	preview() {
-		this.setState({
-			isPreview: true,
-		});
-	}
-	render() {
-		return (
-			<div className="App">
-				<div className="buttons-div">
-					<button onClick={this.edit}>Edit Mode</button>
-					<button onClick={this.preview}>Preview Mode</button>
-				</div>
-				<div id="cvContainer">
-					<GeneralInfo isPreview={this.state.isPreview} />
-					<BodyComponent
-						name="Experience"
-						place="Company"
-						title="Position"
-						isPreview={this.state.isPreview}
-					/>
-					<BodyComponent
-						name="Education"
-						place="Establishment"
-						title="Degree"
-						isPreview={this.state.isPreview}
-					/>
-					<SkillsComponent
-						name="Skills"
-						isPreview={this.state.isPreview}
-					/>
-				</div>
+	const edit = () => {
+		setIsPreview(false);
+	};
+	const preview = () => {
+		setIsPreview(true);
+	};
+	return (
+		<div className="App">
+			<div className="buttons-div">
+				<button onClick={edit}>Edit Mode</button>
+				<button onClick={preview}>Preview Mode</button>
 			</div>
-		);
-	}
+			<div id="cvContainer">
+				<GeneralInfo isPreview={isPreview} />
+				<BodyComponent
+					name="Experience"
+					place="Company"
+					title="Position"
+					isPreview={isPreview}
+				/>
+				<BodyComponent
+					name="Education"
+					place="Establishment"
+					title="Degree"
+					isPreview={isPreview}
+				/>
+				<SkillsComponent name="Skills" isPreview={isPreview} />
+			</div>
+		</div>
+	);
 }
 
 export default App;

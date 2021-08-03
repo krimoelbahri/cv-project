@@ -1,135 +1,101 @@
-import React from "react";
+import React, { useState } from "react";
 import { InputComponent } from "./Input_component";
 
-class Form extends React.Component {
-	constructor(props) {
-		super(props);
-		this.onSubmitInfo = this.onSubmitInfo.bind(this);
-		this.placeChange = this.placeChange.bind(this);
-		this.titleChange = this.titleChange.bind(this);
-		this.startDateChange = this.startDateChange.bind(this);
-		this.endDateChange = this.endDateChange.bind(this);
-		this.descriptionChange = this.descriptionChange.bind(this);
+function Form(props) {
+	const [place, setPlace] = useState("");
+	const [title, setTitle] = useState("");
+	const [startDate, setStartDate] = useState("");
+	const [endDate, setEndDate] = useState("");
+	const [description, setDescription] = useState("");
 
-		this.state = {
-			place: "",
-			title: "",
-			startDate: "",
-			endDate: "",
-			description: "",
-		};
-	}
-	placeChange(e) {
-		this.setState({
-			place: e.target.value,
-		});
-	}
-	titleChange(e) {
-		this.setState({
-			title: e.target.value,
-		});
-	}
-	startDateChange(e) {
-		this.setState({
-			startDate: e.target.value,
-		});
-	}
-	endDateChange(e) {
-		this.setState({
-			endDate: e.target.value,
-		});
-	}
-	descriptionChange(e) {
-		this.setState({
-			description: e.target.value,
-		});
-	}
-	onSubmitInfo(e) {
+	const placeChange = (e) => {
+		setPlace(e.target.value);
+	};
+	const titleChange = (e) => {
+		setTitle(e.target.value);
+	};
+	const startDateChange = (e) => {
+		setStartDate(e.target.value);
+	};
+	const endDateChange = (e) => {
+		setEndDate(e.target.value);
+	};
+	const descriptionChange = (e) => {
+		setDescription(e.target.value);
+	};
+	const onSubmitInfo = (e) => {
 		e.preventDefault();
-		let obj = this.state;
-		this.props.onSubmitted(obj);
-	}
-	render() {
-		return (
-			<form onSubmit={this.onSubmitInfo} className="pd-1x body-form">
+		let obj = { place, title, startDate, endDate, description };
+		props.onSubmitted(obj);
+	};
+	return (
+		<form onSubmit={onSubmitInfo} className="pd-1x body-form">
+			<InputComponent
+				handleInputChange={placeChange}
+				id={props.place.toLowerCase()}
+				title={props.place}
+				type="text"
+			/>
+			<InputComponent
+				handleInputChange={titleChange}
+				id={props.title.toLowerCase()}
+				title={props.title}
+				type="text"
+			/>
+			<div className="form-date pd-1px">
 				<InputComponent
-					handleInputChange={this.placeChange}
-					id={this.props.place.toLowerCase()}
-					title={this.props.place}
-					type="text"
+					handleInputChange={startDateChange}
+					id="startDate"
+					title="From"
+					type="date"
 				/>
 				<InputComponent
-					handleInputChange={this.titleChange}
-					id={this.props.title.toLowerCase()}
-					title={this.props.title}
-					type="text"
+					handleInputChange={endDateChange}
+					id="endDate"
+					title="To"
+					type="date"
 				/>
-				<div className="form-date pd-1px">
-					<InputComponent
-						handleInputChange={this.startDateChange}
-						id="startDate"
-						title="From"
-						type="date"
-					/>
-					<InputComponent
-						handleInputChange={this.endDateChange}
-						id="endDate"
-						title="To"
-						type="date"
-					/>
-				</div>
-				<textarea
-					onChange={this.descriptionChange}
-					id="description"
-					title="Description"
-					rows="2"
-					cols="60"
-					placeholder="2 Lines Max"
-				/>
-				<div>
-					<button onClick={this.props.onCancel}>Cancel</button>
-					<button type="submit"> Submit</button>
-				</div>
-			</form>
-		);
-	}
+			</div>
+			<textarea
+				onChange={descriptionChange}
+				id="description"
+				title="Description"
+				rows="2"
+				cols="60"
+				placeholder="2 Lines Max"
+			/>
+			<div>
+				<button onClick={props.onCancel}>Cancel</button>
+				<button type="submit"> Submit</button>
+			</div>
+		</form>
+	);
 }
-class SkillsForm extends React.Component {
-	constructor(props) {
-		super(props);
-		this.onSubmitInfo = this.onSubmitInfo.bind(this);
-		this.skillChange = this.skillChange.bind(this);
+function SkillsForm(props) {
+	const [skill, setSkill] = useState("");
 
-		this.state = {
-			skill: "",
-		};
-	}
-	skillChange(e) {
-		this.setState({
-			skill: e.target.value,
-		});
-	}
-
-	onSubmitInfo(e) {
+	const skillChange = (e) => {
+		setSkill(e.target.value);
+	};
+	const onSubmitInfo = (e) => {
 		e.preventDefault();
-		let obj = this.state;
-		this.props.onSubmitted(obj);
-	}
-	render() {
-		return (
-			<form onSubmit={this.onSubmitInfo} className="pd-1x skill-form">
-				<InputComponent
-					handleInputChange={this.skillChange}
-					id={this.props.skill.toLowerCase()}
-					title={this.props.skill}
-					type="text"
-				/>
-				<div>
-					<button onClick={this.props.onCancel}>Cancel</button>
-					<button type="submit"> Submit</button>
-				</div>
-			</form>
-		);
-	}
+		let obj = { skill };
+		props.onSubmitted(obj);
+	};
+
+	return (
+		<form onSubmit={onSubmitInfo} className="pd-1x skill-form">
+			<InputComponent
+				handleInputChange={skillChange}
+				id={props.skill.toLowerCase()}
+				title={props.skill}
+				type="text"
+			/>
+			<div>
+				<button onClick={props.onCancel}>Cancel</button>
+				<button type="submit"> Submit</button>
+			</div>
+		</form>
+	);
 }
 export { Form, SkillsForm };

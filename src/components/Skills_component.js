@@ -1,87 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import { SkillsForm } from "./Form";
 import { SkillsInformation } from "./Info_component";
 
-class SkillsComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.handleClick = this.handleClick.bind(this);
-		this.onSubmitted = this.onSubmitted.bind(this);
-		this.onCancel = this.onCancel.bind(this);
-		this.deleteInformation = this.deleteInformation.bind(this);
+function SkillsComponent(props) {
+	let isPreview = props.isPreview;
+	let form;
+	let body;
 
-		this.state = {
-			isEditing: false,
-			info: [],
-		};
+	const [isEditing, setIsEditing] = useState(false);
+	const [info, setInfo] = useState([]);
+
+	const handleClick = () => {
+		setIsEditing(!isEditing);
+	};
+	const onSubmitted = (obj) => {
+		setIsEditing(!isEditing);
+		setInfo(info.concat(obj));
+	};
+	const onCancel = () => {
+		setIsEditing(!isEditing);
+	};
+	const deleteInformation = (obj) => {
+		setInfo(info.filter((object) => object !== obj));
+	};
+
+	if (isEditing) {
+		form = (
+			<SkillsForm
+				id={props.name.toLowerCase()}
+				skill={props.name}
+				onSubmitted={onSubmitted}
+				onCancel={onCancel}
+			/>
+		);
+	} else {
+		form = <button onClick={handleClick}>Add {props.name}</button>;
 	}
-	handleClick() {
-		this.setState((prevState) => ({
-			isEditing: !prevState.isEditing,
-		}));
-	}
-	onSubmitted(obj) {
-		this.setState((prevState) => ({
-			isEditing: !prevState.isEditing,
-			info: this.state.info.concat(obj),
-		}));
-	}
-	onCancel() {
-		this.setState((prevState) => ({
-			isEditing: !prevState.isEditing,
-		}));
-	}
-	deleteInformation(obj) {
-		this.setState(() => ({
-			info: this.state.info.filter((object) => object !== obj),
-		}));
-	}
-	render() {
-		let { isEditing, info } = this.state;
-		let isPreview = this.props.isPreview;
-		let form;
-		let body;
-		if (isEditing) {
-			form = (
-				<SkillsForm
-					id={this.props.name.toLowerCase()}
-					skill={this.props.name}
-					onSubmitted={this.onSubmitted}
-					onCancel={this.onCancel}
+	if (!isPreview) {
+		body = (
+			<>
+				<h2>{props.name}</h2>
+				<SkillsInformation
+					info={info}
+					deleteClick={deleteInformation}
+					isPreview={isPreview}
 				/>
-			);
-		} else {
-			form = (
-				<button onClick={this.handleClick}>
-					Add {this.props.name}
-				</button>
-			);
-		}
-		if (!isPreview) {
-			body = (
-				<div className="body-info-full">
-					<h2>{this.props.name}</h2>
-					<SkillsInformation
-						info={info}
-						deleteClick={this.deleteInformation}
-						isPreview={isPreview}
-					/>
-					{form}
-				</div>
-			);
-		} else {
-			body = (
-				<div className="body-info-full">
-					<h2>{this.props.name}</h2>
-					<SkillsInformation
-						info={info}
-						deleteClick={this.deleteInformation}
-						isPreview={isPreview}
-					/>
-				</div>
-			);
-		}
-		return <div className="body-info">{body}</div>;
+				{form}
+			</>
+		);
+	} else {
+		body = (
+			<>
+				<h2>{props.name}</h2>
+				<SkillsInformation
+					info={info}
+					deleteClick={deleteInformation}
+					isPreview={isPreview}
+				/>
+			</>
+		);
 	}
+	return <div className="body-info">{body}</div>;
 }
 export { SkillsComponent };
