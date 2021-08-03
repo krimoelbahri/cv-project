@@ -82,8 +82,8 @@ class Form extends React.Component {
 					onChange={this.descriptionChange}
 					id="description"
 					title="Description"
-					rows="2"
-					cols="60"
+					rows="3"
+					cols="30"
 					placeholder="2 Lines Max"
 				/>
 				<div>

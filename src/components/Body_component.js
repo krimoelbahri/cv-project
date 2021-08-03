@@ -60,7 +60,7 @@ class BodyComponent extends React.Component {
 		}
 		if (!isPreview) {
 			body = (
-				<div className="body-info-full">
+				<>
 					<h2>{this.props.name}</h2>
 					<Information
 						info={info}
@@ -70,11 +70,11 @@ class BodyComponent extends React.Component {
 						deleteClick={this.deleteInformation}
 					/>
 					{form}
-				</div>
+				</>
 			);
 		} else {
 			body = (
-				<div className="body-info-full">
+				<>
 					<h2>{this.props.name}</h2>
 					<Information
 						info={info}
@@ -83,7 +83,7 @@ class BodyComponent extends React.Component {
 						isPreview={isPreview}
 						deleteClick={this.deleteInformation}
 					/>
-				</div>
+				</>
 			);
 		}
 		return <div className="body-info">{body}</div>;

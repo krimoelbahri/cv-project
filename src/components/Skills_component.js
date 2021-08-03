@@ -59,7 +59,7 @@ class SkillsComponent extends React.Component {
 		}
 		if (!isPreview) {
 			body = (
-				<div className="body-info-full">
+				<>
 					<h2>{this.props.name}</h2>
 					<SkillsInformation
 						info={info}
@@ -67,18 +67,18 @@ class SkillsComponent extends React.Component {
 						isPreview={isPreview}
 					/>
 					{form}
-				</div>
+				</>
 			);
 		} else {
 			body = (
-				<div className="body-info-full">
+				<>
 					<h2>{this.props.name}</h2>
 					<SkillsInformation
 						info={info}
 						deleteClick={this.deleteInformation}
 						isPreview={isPreview}
 					/>
-				</div>
+				</>
 			);
 		}
 		return <div className="body-info">{body}</div>;
