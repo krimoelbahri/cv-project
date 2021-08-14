@@ -7,48 +7,44 @@ import React from "react";
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.edit = this.edit.bind(this);
-		this.preview = this.preview.bind(this);
 
 		this.state = {
 			isPreview: false,
 		};
 	}
-	edit() {
+	setPreviewMode(state) {
 		this.setState({
-			isPreview: false,
+			isPreview: state,
 		});
 	}
-	preview() {
-		this.setState({
-			isPreview: true,
-		});
-	}
+
 	render() {
+		const { isPreview } = this.state;
 		return (
-			<div className="App">
-				<div className="buttons-div">
-					<button onClick={this.edit}>Edit Mode</button>
-					<button onClick={this.preview}>Preview Mode</button>
+			<div className='App'>
+				<div className='buttons-div'>
+					<button onClick={() => this.setPreviewMode(false)}>
+						Edit Mode
+					</button>
+					<button onClick={() => this.setPreviewMode(true)}>
+						Preview Mode
+					</button>
 				</div>
-				<div id="cvContainer">
-					<GeneralInfo isPreview={this.state.isPreview} />
+				<div id='cvContainer'>
+					<GeneralInfo isPreview={isPreview} />
 					<BodyComponent
-						name="Experience"
-						place="Company"
-						title="Position"
-						isPreview={this.state.isPreview}
+						name='Experience'
+						place='Company'
+						title='Position'
+						isPreview={isPreview}
 					/>
 					<BodyComponent
-						name="Education"
-						place="Establishment"
-						title="Degree"
-						isPreview={this.state.isPreview}
+						name='Education'
+						place='Establishment'
+						title='Degree'
+						isPreview={isPreview}
 					/>
-					<SkillsComponent
-						name="Skills"
-						isPreview={this.state.isPreview}
-					/>
+					<SkillsComponent name='Skills' isPreview={isPreview} />
 				</div>
 			</div>
 		);
